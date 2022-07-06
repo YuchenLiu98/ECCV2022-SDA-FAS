@@ -11,6 +11,29 @@ The framework of our proposed SDA-FAS:
 <img src="https://github.com/YuchenLiu98/ECCV2022-SDA-FAS/blob/main/imgs/framework.PNG" width="750px">
 </div>
 
+## Congifuration Environment
+- Python 3.7
+- Pytorch 1.7.0 
+- torchvision 0.8.1
+- timm 0.3.2
+
+## Data Preparation
+### Dataset
+Download the OULU-NPU, CASIA-FASD, Idiap Replay-Attack, MSU-MFSD, and CelebA-Spoof datasets.
+### Data Pre-processing.
+MTCNN is used for face detection and alignment. All the cropped faces are resized as (256,256,3).
+### Data Organization
+```
+└── Data_Dir
+   ├── OULU_NPU
+   ├── CASIA_MFSD
+   ├── REPLAY_ATTACK
+   ├── MSU_MFSD
+   ├── CelebA-Spoof
+   └── ...
+```
+## Training
+
 ## Citation
 Please cite our paper if the code is helpful to your research.
 ```
@@ -20,3 +43,4 @@ Please cite our paper if the code is helpful to your research.
     booktitle = {ECCV},
     year = {2022}
 }
+
