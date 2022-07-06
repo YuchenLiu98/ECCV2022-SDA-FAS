@@ -3,12 +3,12 @@ The implementation of "Source-Free Domain Adaptation with Contrastive Domain Ali
 
 The motivation of our proposed SDA-FAS:
 <div align=center>
-<img src="https://github.com/YuchenLiu98/ECCV2022-SDA-FAS/blob/main/imgs/motivation.PNG" width="500px">
+<img src="https://github.com/YuchenLiu98/ECCV2022-SDA-FAS/blob/main/imgs/motivation.PNG" width="450px">
 </div>
 
 The framework of our proposed SDA-FAS:
 <div align=center>
-<img src="https://github.com/YuchenLiu98/ECCV2022-SDA-FAS/blob/main/imgs/framework.PNG" width="700px">
+<img src="https://github.com/YuchenLiu98/ECCV2022-SDA-FAS/blob/main/imgs/framework.PNG" width="750px">
 </div>
 
 ## Citation
