@@ -1,2 +1,2 @@
 # ECCV2022-SDA-FAS
-Source-Free Domain Adaptation with Contrastive Domain Alignment and Self-supervised Exploration for Face Anti-Spoofing, ECCV2022
+The implementation of "Source-Free Domain Adaptation with Contrastive Domain Alignment and Self-supervised Exploration for Face Anti-Spoofing", ECCV2022
