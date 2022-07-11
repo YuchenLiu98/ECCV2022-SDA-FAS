@@ -83,9 +83,9 @@ def get_args_parser():
                         help='patience epochs for Plateau LR scheduler (default: 10')
     parser.add_argument('--decay-rate', '--dr', type=float, default=0.1, metavar='RATE',
                         help='LR decay rate (default: 0.1)')
-    parser.add_argument('--source_model_transformer', default="/home/lyc/SSDG-CVPR2020-master_transformer_imbalance_patch_256_contrastive/experiment/O_M_I_to_C/CASIA_label_checkpoint3/resnet18/best_model/model_best_transformer_0.15278_17.pth.tar",
+    parser.add_argument('--source_model_transformer', default="/home/lyc/experiment/O_M_I_to_C/model_best_transformer_0.15278_17.pth.tar",
                         help='path for the pretrained source transformer model')
-    parser.add_argument('--source_model_embedder_classifier', default="/home/lyc/SSDG-CVPR2020-master_transformer_imbalance_patch_256_contrastive/experiment/O_M_I_to_C/CASIA_label_checkpoint3/resnet18/best_model/model_best_0.15278_17.pth.tar",
+    parser.add_argument('--source_model_embedder_classifier', default="/home/lyc/experiment/O_M_I_to_C/model_best_0.15278_17.pth.tar",
                         help='path for the pretrained source embedder and classifier model')
     parser.add_argument('--dataset_path', default="/home/liuyuchen/CASIA-MFSD/CASIA_train_label_six.json",
                         help='dataset path')
@@ -142,12 +142,10 @@ def test_and_save(args, train_dataloader, feature_transformer, model):
     for i in range(len(prob_list_copy)):
         if prob_list_copy[i] < 0.5:
             prob_list_copy[i] = 1 - prob_list_copy[i]
-    # print(len(prob_list_copy))
     count_select = 0
     for i in range(len(prob_list_copy)):
         if prob_list_copy[i] > confidence_threshold:
             count_select = count_select + 1
-    print(count_select)
 
     count_true = 0
     for i in range(len(label_list)):
@@ -155,7 +153,6 @@ def test_and_save(args, train_dataloader, feature_transformer, model):
             count_true = count_true + 1
         elif label_list[i]==0 and prob_list[i] <= 1 - confidence_threshold:
             count_true = count_true + 1
-    print(count_true/count_select)
 
     original_all_label_json = json.load(open(args.dataset_path, 'r'))
     f_sample1 = open(args.dataset_source_pseudo_path, 'w')
@@ -243,12 +240,6 @@ def test_and_save_target(args, train_dataloader, feature_transformer, model, mod
             count_true = count_true + 1
         elif label_list[i]==0 and prob_list[i] <= 1 - confidence_threshold:
             count_true = count_true + 1
-    
-    log.write('\n')
-    log.write('confidence rate %6.3f' % (count_select/len(prob_list_copy)))
-    log.write('\n')
-    log.write('label ACC %6.3f' % (count_true/count_select))
-    log.write('\n')
 
     original_all_label_json = json.load(open(args.dataset_path, 'r'))
     source_pseudo_all_label_json = json.load(open(args.dataset_source_pseudo_path, 'r'))
@@ -573,9 +564,6 @@ def train(args):
                 best_model_AUC = valid_args[4]
 
             save_list = [epoch, valid_args, best_model_HTER, best_model_ACC, best_model_ACER, threshold]
-            # save_checkpoint(save_list, is_best, net, config.gpus, config.checkpoint_path, config.best_model_path)
-            # save_checkpoint(save_list, is_best, net_s2t, config.gpus, config.checkpoint_path, config.best_model_path)
-            # save_checkpoint_transformer(save_list, is_best, feature_transformer, config.gpus, config.checkpoint_path, config.best_model_path)
             print('\r', end='', flush=True)
             log.write(
                 '  %4.1f  |  %5.3f  %6.3f  %6.3f  %6.3f  |  %6.3f  %6.3f  |  %6.3f  %6.3f  %6.3f  | %s   %s'
