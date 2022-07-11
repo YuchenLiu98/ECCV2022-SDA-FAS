@@ -33,7 +33,7 @@ MTCNN is used for face detection and alignment. All the cropped faces are resize
    └── ...
 ```
 ## Training
-Move to the folder $root/SDA-FAS/experiment/testing_scenarios/ and just run:
+Move to the folder $root/SDA-FAS/experiment/testing_scenarios/ and run:
 ```
 python train_SDAFAS.py
 ```
