@@ -83,9 +83,9 @@ def get_args_parser():
                         help='patience epochs for Plateau LR scheduler (default: 10')
     parser.add_argument('--decay-rate', '--dr', type=float, default=0.1, metavar='RATE',
                         help='LR decay rate (default: 0.1)')
-    parser.add_argument('--source_model_transformer', default="/home/lyc/SSDG-CVPR2020-master_transformer_imbalance_patch_256_contrastive/experiment/O_C_M_to_I/replay_checkpoint2/resnet18/best_model/model_best_transformer_0.18333_26.pth.tar",
+    parser.add_argument('--source_model_transformer', default="/home/lyc/experiment/O_C_M_to_I/model_best_transformer_0.18333_26.pth.tar",
                         help='path for the pretrained source transformer model')
-    parser.add_argument('--source_model_embedder_classifier', default="/home/lyc/SSDG-CVPR2020-master_transformer_imbalance_patch_256_contrastive/experiment/O_C_M_to_I/replay_checkpoint2/resnet18/best_model/model_best_0.18333_26.pth.tar",
+    parser.add_argument('--source_model_embedder_classifier', default="/home/lyc/experiment/O_C_M_to_I/model_best_0.18333_26.pth.tar",
                         help='path for the pretrained source embedder and classifier model')
     parser.add_argument('--dataset_path', default="/home/liuyuchen/Replay/replaychoose_train_label_four.json",
                         help='dataset path')
