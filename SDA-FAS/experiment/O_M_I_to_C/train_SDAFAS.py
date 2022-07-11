@@ -83,9 +83,9 @@ def get_args_parser():
                         help='patience epochs for Plateau LR scheduler (default: 10')
     parser.add_argument('--decay-rate', '--dr', type=float, default=0.1, metavar='RATE',
                         help='LR decay rate (default: 0.1)')
-    parser.add_argument('--source_model_transformer', default="/home/lyc/experiment/O_M_I_to_C/model_best_transformer_0.15278_17.pth.tar",
+    parser.add_argument('--source_model_transformer', default="/home/lyc/experiment/O_M_I_to_C/model_best_transformer.pth.tar",
                         help='path for the pretrained source transformer model')
-    parser.add_argument('--source_model_embedder_classifier', default="/home/lyc/experiment/O_M_I_to_C/model_best_0.15278_17.pth.tar",
+    parser.add_argument('--source_model_embedder_classifier', default="/home/lyc/experiment/O_M_I_to_C/model_best.pth.tar",
                         help='path for the pretrained source embedder and classifier model')
     parser.add_argument('--dataset_path', default="/home/liuyuchen/CASIA-MFSD/CASIA_train_label_six.json",
                         help='dataset path')
