@@ -147,7 +147,6 @@ def test_and_save(args, train_dataloader, feature_transformer, model):
     for i in range(len(prob_list_copy)):
         if prob_list_copy[i] > confidence_threshold:
             count_select = count_select + 1
-    print(count_select)
 
     count_true = 0
     for i in range(len(label_list)):
@@ -155,7 +154,6 @@ def test_and_save(args, train_dataloader, feature_transformer, model):
             count_true = count_true + 1
         elif label_list[i]==0 and prob_list[i] <= 1 - confidence_threshold:
             count_true = count_true + 1
-    print(count_true/count_select)
 
     original_all_label_json = json.load(open(args.dataset_path, 'r'))
     f_sample1 = open(args.dataset_source_pseudo_path, 'w')
@@ -243,12 +241,6 @@ def test_and_save_target(args, train_dataloader, feature_transformer, model, mod
             count_true = count_true + 1
         elif label_list[i]==0 and prob_list[i] <= 1 - confidence_threshold:
             count_true = count_true + 1
-    
-    log.write('\n')
-    log.write('confidence rate %6.3f' % (count_select/len(prob_list_copy)))
-    log.write('\n')
-    log.write('label ACC %6.3f' % (count_true/count_select))
-    log.write('\n')
 
     original_all_label_json = json.load(open(args.dataset_path, 'r'))
     source_pseudo_all_label_json = json.load(open(args.dataset_source_pseudo_path, 'r'))
