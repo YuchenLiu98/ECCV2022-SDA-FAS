@@ -564,9 +564,6 @@ def train(args):
                 best_model_AUC = valid_args[4]
 
             save_list = [epoch, valid_args, best_model_HTER, best_model_ACC, best_model_ACER, threshold]
-            # save_checkpoint(save_list, is_best, net, config.gpus, config.checkpoint_path, config.best_model_path)
-            # save_checkpoint(save_list, is_best, net_s2t, config.gpus, config.checkpoint_path, config.best_model_path)
-            # save_checkpoint_transformer(save_list, is_best, feature_transformer, config.gpus, config.checkpoint_path, config.best_model_path)
             print('\r', end='', flush=True)
             log.write(
                 '  %4.1f  |  %5.3f  %6.3f  %6.3f  %6.3f  |  %6.3f  %6.3f  |  %6.3f  %6.3f  %6.3f  | %s   %s'
