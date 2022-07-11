@@ -536,8 +536,8 @@ def train(args):
 
         loss_classifier.update((1-alpha) * cls_loss.item())
         loss_classifier_target.update(alpha * cls_loss_target.item())
-        loss_classifier_target_contrastive.update(cda_loss.item())
-        loss_dino.update(total_TSE_loss.item())
+        loss_classifier_target_contrastive.update(0.3*cda_loss.item())
+        loss_dino.update(0.15*total_TSE_loss.item())
         
         acc = accuracy(classifier_label_out.narrow(0, 0, input_data.size(0)), source_label, topk=(1,))
         classifer_top1.update(acc[0])
