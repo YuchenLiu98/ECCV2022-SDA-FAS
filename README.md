@@ -33,7 +33,9 @@ MTCNN is used for face detection and alignment. All the cropped faces are resize
    └── ...
 ```
 ## Training
-
+```
+python train_SDAFAS.py
+```
 ## Citation
 Please cite our paper if the code is helpful to your research.
 ```
