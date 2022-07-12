@@ -37,6 +37,11 @@ Move to the folder $root/SDA-FAS/experiment/testing_scenarios/ and run:
 ```
 python train_SDAFAS.py
 ```
+## Testing
+Move to the folder $root/SDA-FAS/experiment/testing_scenarios/ and run:
+```
+python test_SDAFAS.py
+```
 ## Citation
 Please cite our paper if the code is helpful to your research.
 ```
