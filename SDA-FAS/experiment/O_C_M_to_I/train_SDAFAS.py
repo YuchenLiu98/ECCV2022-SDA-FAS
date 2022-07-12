@@ -142,7 +142,7 @@ def test_and_save(args, train_dataloader, feature_transformer, model):
     for i in range(len(prob_list_copy)):
         if prob_list_copy[i] < 0.5:
             prob_list_copy[i] = 1 - prob_list_copy[i]
-    # print(len(prob_list_copy))
+
     count_select = 0
     for i in range(len(prob_list_copy)):
         if prob_list_copy[i] > confidence_threshold:
@@ -286,8 +286,7 @@ def TSE_loss(teacher_embedding,student_embedding,center):
     teacher_embedding = F.softmax((teacher_embedding - center) / config.temperature, dim=-1)
     teacher_embedding = teacher_embedding.detach()
     return torch.sum(-teacher_embedding * F.log_softmax(student_embedding, dim=-1), dim=-1)
-    # return torch.sum(-teacher_embedding * F.log_softmax(student_embedding/config.temperature, dim=-1), dim=-1)
-
+    
 random.seed(config.seed)
 np.random.seed(config.seed)
 torch.manual_seed(config.seed)
@@ -428,7 +427,6 @@ def train(args):
             adjust_learning_rate(optimizer_s2t, epoch, init_param_lr, config.lr_epoch_1, config.lr_epoch_2)
 
         ######### data prepare #########
-        ######### output two augmentation results #########
         tgt_train_img_, tgt_train_img, tgt_train_label, tgt_train_label_target, tgt_train_confidence, tgt_train_confidence_target = tgt_train_dataloader_iter_current.next()
 
         ######### forward #########
@@ -468,6 +466,7 @@ def train(args):
         teacher_classifier_label_out_ = classifer_fix(teacher_feature_)
 
         total_teacher_feature = torch.cat((teacher_classifier_label_out, teacher_classifier_label_out_),0)
+        
         batch_center = torch.sum(total_teacher_feature, dim=0, keepdim=True)
         batch_center = batch_center/(len(total_teacher_feature))
         CENTER = 0.9 * CENTER + 0.1 * batch_center
@@ -536,8 +535,8 @@ def train(args):
 
         loss_classifier.update((1-alpha) * cls_loss.item())
         loss_classifier_target.update(alpha * cls_loss_target.item())
-        loss_classifier_target_contrastive.update(0.3*cda_loss.item())
-        loss_dino.update(0.15*total_TSE_loss.item())
+        loss_classifier_target_contrastive.update(cda_loss.item())
+        loss_dino.update(total_TSE_loss.item())
         
         acc = accuracy(classifier_label_out.narrow(0, 0, input_data.size(0)), source_label, topk=(1,))
         classifer_top1.update(acc[0])
@@ -575,8 +574,6 @@ def train(args):
                 time_to_str(timer() - start, 'min'),
                 param_lr_tmp[0]))
             log.write('\n')
-            # log.write('cls loss %6.3f, triplet loss %6.3f, clss_patch loss %6.3f' % (loss_classifier.avg,loss_triplet_patch.avg,loss_classifier_patch.avg))
-            # log.write('cls loss %6.3f, triplet loss %6.3f, clss_patch loss %6.3f' % (loss_classifier.avg,0,loss_classifier_patch.avg))
             if count_number == 0:
                 log.write('cls loss %6.3f, target cls loss %6.3f, target contrastive loss %6.3f, dino loss %6.3f' % (0, loss_classifier_target.avg, 0, loss_dino.avg))
             else:
@@ -589,44 +586,3 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser('DeiT training and evaluation script', parents=[get_args_parser()])
     args = parser.parse_args()
     train(args)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
