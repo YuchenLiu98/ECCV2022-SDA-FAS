@@ -21,7 +21,6 @@ def eval(valid_dataloader, feature_transformer, model, model_target, norm_flag):
             input = Variable(input).cuda()
             target = Variable(torch.from_numpy(np.array(target)).long()).cuda()
             feature_trans = feature_transformer(input)
-            # cls_out, feature = model(feature_trans, config.norm_flag)
             _, feature = model(feature_trans, config.norm_flag)
             cls_out = model_target(feature)
             prob = F.softmax(cls_out, dim=1).cpu().data.numpy()[:, 1]
