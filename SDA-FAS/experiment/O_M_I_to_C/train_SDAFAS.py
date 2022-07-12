@@ -468,8 +468,7 @@ def train(args):
 
         total_teacher_feature = torch.cat((teacher_classifier_label_out, teacher_classifier_label_out_),0)
         batch_center = torch.sum(total_teacher_feature, dim=0, keepdim=True)
-        # batch_center = batch_center/(len(total_teacher_feature))
-        batch_center = batch_center/(len(total_teacher_feature)*2*config.batch_size)
+        batch_center = batch_center/(len(total_teacher_feature))
         CENTER = 0.9 * CENTER + 0.1 * batch_center
         
         self_classifier_label_out = classifer_fix(feature)
