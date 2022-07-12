@@ -43,12 +43,13 @@ Move to the folder $root/SDA-FAS/experiment/testing_scenarios/ and run:
 python test_SDAFAS.py
 ```
 ## Trained Models
-| Scenarios | HTER(%) | AUC(%) | trained models |
+| Scenarios | HTER(%) | AUC(%) | Trained models |
 |:---:|:---:|:---:|:---:|
-| O&C&I to M | 5.00 | 96.60 | [model](https://github.com/hkzhang91/EdgeFormer/blob/main/pretrained_models/classification/checkpoint_ema_avg.pt) |
-| O&M&I to C | 2.40 | 99.42 | [model](https://github.com/hkzhang91/EdgeFormer/blob/main/pretrained_models/detection/checkpoint_ema_avg.pt) |
-| O&C&M to I | 2.25 | 99.64 | [model](https://github.com/hkzhang91/EdgeFormer/blob/main/pretrained_models/segmentation/checkpoint_ema_avg.pt) |
-| I&C&M to O | 5.07 | 99.00 | [model](https://github.com/hkzhang91/EdgeFormer/blob/main/pretrained_models/segmentation/checkpoint_ema_avg.pt) |
+| O&C&I to M | 5.00 | 96.60 | [model](https://pan.baidu.com/s/1kfsGf7CfGrP_hkfRsLS_OQ) |
+| O&M&I to C | 2.40 | 99.42 | [model](https://pan.baidu.com/s/1QsDO_DJQS9f0S2BbUKV0RQ) |
+| O&C&M to I | 2.25 | 99.64 | [model](https://pan.baidu.com/s/1f5PT68Gh6lpD-reqWNbTBw) |
+| I&C&M to O | 5.07 | 99.00 | [model](https://pan.baidu.com/s/1frxe_GZr1XMCDs2XnDtcPg) |
+Access code for Baidu is sdaf
 ## Citation
 Please cite our paper if the code is helpful to your research.
 ```
