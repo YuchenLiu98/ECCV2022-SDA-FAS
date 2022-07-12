@@ -574,8 +574,6 @@ def train(args):
                 time_to_str(timer() - start, 'min'),
                 param_lr_tmp[0]))
             log.write('\n')
-            # log.write('cls loss %6.3f, triplet loss %6.3f, clss_patch loss %6.3f' % (loss_classifier.avg,loss_triplet_patch.avg,loss_classifier_patch.avg))
-            # log.write('cls loss %6.3f, triplet loss %6.3f, clss_patch loss %6.3f' % (loss_classifier.avg,0,loss_classifier_patch.avg))
             if count_number == 0:
                 log.write('cls loss %6.3f, target cls loss %6.3f, target contrastive loss %6.3f, dino loss %6.3f' % (0, loss_classifier_target.avg, 0, loss_dino.avg))
             else:
